@@ -15,7 +15,7 @@ gn_ipv46(char *host, size_t hostlen, char *serv, size_t servlen,
 
 	if (hostlen > 0) {
 		if (flags & NI_NUMERICHOST) {
-			if (inet_ntop(family, aptr, host, hostlen) == NULL)
+			if (inet_ntop_compat(family, aptr, host, hostlen) == NULL)
 				return(1);
 		} else {
 			hptr = gethostbyaddr(aptr, alen, family);
@@ -28,7 +28,7 @@ gn_ipv46(char *host, size_t hostlen, char *serv, size_t servlen,
 			} else {
 				if (flags & NI_NAMEREQD)
 					return(1);
-				if (inet_ntop(family, aptr, host, hostlen) == NULL)
+				if (inet_ntop_compat(family, aptr, host, hostlen) == NULL)
 					return(1);
 			}
 		}

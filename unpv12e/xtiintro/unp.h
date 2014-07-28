@@ -111,10 +111,11 @@
 #endif
 
 /* The structure returned by recvfrom_flags() */
-struct in_pktinfo {
+/* commented out because of compile failure */
+/* struct in_pktinfo {
   struct in_addr	ipi_addr;	/* dst IPv4 address */
-  int				ipi_ifindex;/* received interface index */
-};
+  /* int				ipi_ifindex;/* received interface index */
+/* };
 /* $$.It in_pktinfo$$ */
 /* $$.Ib ipi_addr$$ */
 /* $$.Ib ipi_ifindex$$ */
@@ -315,7 +316,7 @@ struct if_nameindex *if_nameindex(void);
 
 #ifndef	HAVE_INET_PTON_PROTO
 int			 inet_pton(int, const char *, void *);
-const char	*inet_ntop(int, const void *, char *, size_t);
+const char	*Inet_ntop(int, const void *, char *, size_t);
 #endif
 
 #ifndef	HAVE_INET_ATON_PROTO

@@ -23,7 +23,7 @@ xti_ntop(const struct netbuf *np)
 
 		if (np->len != sizeof(struct sockaddr_in))
 			goto loop;
-		if (inet_ntop(AF_INET, &sin->sin_addr, name, sizeof(str)) == NULL)
+		if (inet_ntop_compat(AF_INET, &sin->sin_addr, name, sizeof(str)) == NULL)
 			return(NULL);
 		if (ntohs(sin->sin_port) != 0) {
 			snprintf(portstr, sizeof(portstr), ".%d", ntohs(sin->sin_port));
@@ -39,7 +39,7 @@ xti_ntop(const struct netbuf *np)
 		if (np->len != sizeof(struct sockaddr_in6))
 			goto loop;
 
-		if (inet_ntop(AF_INET6, &sin6->sin6_addr, name, sizeof(str)) == NULL)
+		if (inet_ntop_compat(AF_INET6, &sin6->sin6_addr, name, sizeof(str)) == NULL)
 			return(NULL);
 		if (ntohs(sin6->sin6_port) != 0) {
 			snprintf(portstr, sizeof(portstr), ".%d", ntohs(sin6->sin6_port));

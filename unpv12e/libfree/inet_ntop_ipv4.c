@@ -9,7 +9,7 @@
 
 /* include inet_ntop */
 const char *
-inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
+inet_ntop_compat(int family, const void *addrptr, char *strptr, size_t len)
 {
 	const u_char *p = (const u_char *) addrptr;
 

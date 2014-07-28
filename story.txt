@@ -48,4 +48,5 @@ Simple, just remove these local versions of inet_ntop and struct in_pktinfo
 Wait, const char *
 inet_ntop(af, src, dst, size)
 
-that's easy. Replace all occurence to uppercase I: 
+that's easy. Replace all occurence to uppercase I: WRONG. I tried that but there is a conflict with lib/wraplib.c so instead I did something else: 
+see patch.sh.bak basically appended _compat to this function in all project 

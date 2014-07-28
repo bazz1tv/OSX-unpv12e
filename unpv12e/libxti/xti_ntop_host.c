@@ -23,7 +23,7 @@ xti_ntop_host(const struct netbuf *np)
 
 		if (np->len != sizeof(struct sockaddr_in))
 			goto loop;
-		if (inet_ntop(AF_INET, &sin->sin_addr, name, sizeof(str)) == NULL)
+		if (inet_ntop_compat(AF_INET, &sin->sin_addr, name, sizeof(str)) == NULL)
 			return(NULL);
 		return(name);
 	}
@@ -35,7 +35,7 @@ xti_ntop_host(const struct netbuf *np)
 		if (np->len != sizeof(struct sockaddr_in6))
 			goto loop;
 
-		if (inet_ntop(AF_INET6, &sin6->sin6_addr, name, sizeof(str)) == NULL)
+		if (inet_ntop_compat(AF_INET6, &sin6->sin6_addr, name, sizeof(str)) == NULL)
 			return(NULL);
 		return(name);
 	}

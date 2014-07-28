@@ -1,4 +1,4 @@
-cd	unpv12e_patched
+cd	unpv12e
 ./configure --host=i686
 cd  lib         # build the basic library that all programs need
     make           # use "gmake" everywhere on BSD/OS systems

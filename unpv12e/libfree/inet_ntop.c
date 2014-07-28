@@ -45,7 +45,7 @@ static const char *inet_ntop4(const u_char *src, char *dst, size_t size);
 static const char *inet_ntop6(const u_char *src, char *dst, size_t size);
 
 /* char *
- * inet_ntop(af, src, dst, size)
+ * inet_ntop_compat(af, src, dst, size)
  *	convert a network format address to presentation format.
  * return:
  *	pointer to presentation format address (`dst'), or NULL (see errno).
@@ -53,7 +53,7 @@ static const char *inet_ntop6(const u_char *src, char *dst, size_t size);
  *	Paul Vixie, 1996.
  */
 const char *
-inet_ntop(af, src, dst, size)
+inet_ntop_compat(af, src, dst, size)
 	int af;
 	const void *src;
 	char *dst;

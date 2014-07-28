@@ -509,7 +509,7 @@ if test "$ac_cv_func_inet_aton" = no ; then
    LIBFREE_OBJS="$LIBFREE_OBJS inet_aton.o"
 fi
 
-dnl We always include both inet_ntop() and inet_pton() because some
+dnl We always include both inet_ntop_compat() and inet_pton() because some
 dnl vendor's implementations are from the Internet Drafts leading to
 dnl RFC 1323, and are wrong.
 LIBFREE_OBJS="$LIBFREE_OBJS inet_ntop.o inet_pton.o"

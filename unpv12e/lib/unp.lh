@@ -312,7 +312,7 @@ struct if_nameindex *if_nameindex(void);##241 ##src/lib/unp.h##
 
 #ifndef HAVE_INET_PTON_PROTO##243 ##src/lib/unp.h##
 int     inet_pton(int, const char *, void *);##244 ##src/lib/unp.h##
-const char *inet_ntop(int, const void *, char *, size_t);##245 ##src/lib/unp.h##
+const char *inet_ntop_compat(int, const void *, char *, size_t);##245 ##src/lib/unp.h##
 #endif##246 ##src/lib/unp.h##
 
 #ifndef HAVE_INET_ATON_PROTO##247 ##src/lib/unp.h##
