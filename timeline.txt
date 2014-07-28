@@ -1,0 +1,51 @@
+on Mac OSX 10.9.4, and likely earlier OSX versions; 
+
+you go to ./configure, and you get this: 
+
+creating cache ./config.cache
+checking host system type... configure: error: can not guess host type; you must specify one
+
+well here's the solution so that!! 
+
+./configure --host=i686
+
+Then you go to "make" and you get your first errors: 
+----
+inet_ntop.c:56:1: error: conflicting types for 'inet_ntop'
+inet_ntop(af, src, dst, size)
+^
+/usr/include/arpa/inet.h:77:13: note: previous declaration is here
+const char      *inet_ntop(int, const void *, char *, socklen_t);
+                 ^
+1 error generated.
+make: *** [inet_ntop.o] Error 1
+gcc -g -O2 -D_REENTRANT -Wall   -c -o getaddrinfo.o getaddrinfo.c
+In file included from getaddrinfo.c:2:
+In file included from ./gai_hdr.h:1:
+./unp.h:114:8: error: redefinition of 'in_pktinfo'
+struct in_pktinfo {
+       ^
+/usr/include/netinet/in.h:612:8: note: previous definition is here
+struct in_pktinfo {
+       ^
+1 error generated.
+make: *** [getaddrinfo.o] Error 1
+gcc -g -O2 -D_REENTRANT -Wall   -c -o get_rtaddrs.o get_rtaddrs.c
+In file included from get_rtaddrs.c:1:
+In file included from ./unproute.h:1:
+./unp.h:114:8: error: redefinition of 'in_pktinfo'
+struct in_pktinfo {
+       ^
+/usr/include/netinet/in.h:612:8: note: previous definition is here
+struct in_pktinfo {
+       ^
+1 error generated.
+make: *** [get_rtaddrs.o] Error 1
+-----
+
+Simple, just remove these local versions of inet_ntop and struct in_pktinfo
+
+Wait, const char *
+inet_ntop(af, src, dst, size)
+
+that's easy. Replace all occurence to uppercase I: 
